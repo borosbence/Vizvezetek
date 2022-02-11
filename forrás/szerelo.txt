@@ -1,0 +1,7 @@
+az	nev	kezdev
+1	Tornyos Pál	1979
+2	Kormos István	1981
+3	Fodor László	1983
+4	Szabó Mihály	1975
+5	Szabó György	2000
+6	Erdei Imre	1988

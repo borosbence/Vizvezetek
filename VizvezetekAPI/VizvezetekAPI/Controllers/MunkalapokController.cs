@@ -41,12 +41,18 @@ namespace VizvezetekAPI.Controllers
 
         // GET: api/Munkalapok
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MunkalapDto>>> Getmunkalapok()
+        [Route("")]
+        [Route("ev/{ev}")]
+        public async Task<ActionResult<IEnumerable<MunkalapDto>>> Getmunkalapok(uint ev = 0)
         {
             var munkalapok = await _context.munkalap
                 .Include(h => h.hely)
-                .Include(s => s.szerelo)
-                .ToListAsync();
+                .Include(s => s.szerelo).ToListAsync();
+
+            if (ev > 0)
+            {
+                munkalapok = munkalapok.Where(x => x.javitas_datum.Year == ev).ToList();
+            }
 
             return munkalapok.Select(m => ConvertToMunkalapDto(m)).ToList();
         }

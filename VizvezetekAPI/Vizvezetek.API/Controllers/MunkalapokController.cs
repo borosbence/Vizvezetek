@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using VizvezetekAPI.DTOs;
-using VizvezetekAPI.Models;
+using Vizvezetek.API.Models;
+using Vizvezetek.DTO;
 
-namespace VizvezetekAPI.Controllers
+namespace Vizvezetek.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -43,7 +43,7 @@ namespace VizvezetekAPI.Controllers
         [HttpGet]
         [Route("")]
         [Route("ev/{ev}")]
-        public async Task<ActionResult<IEnumerable<MunkalapDto>>> Getmunkalapok(uint ev = 0)
+        public async Task<List<MunkalapDto>> Getmunkalapok(uint ev = 0)
         {
             var munkalapok = await _context.munkalap
                 .Include(h => h.hely)
@@ -78,12 +78,12 @@ namespace VizvezetekAPI.Controllers
         // POST: api/Munkalapok/Kereses
         [HttpPost]
         [Route("Kereses")]
-        public async Task<ActionResult<IEnumerable<MunkalapDto>>> Kereses(MunkalapKeresesDto kereses)
+        public async Task<List<MunkalapDto>> Kereses(MunkalapKeresesDto kereses)
         {
             var munkalapok = await _context.munkalap
                 .Include(h => h.hely)
                 .Include(s => s.szerelo)
-                .Where(m => m.hely_id == kereses.hely_id && m.szerelo_id == kereses.szerelo_id)
+                .Where(m => m.hely.telepules == kereses.telepules && m.szerelo.nev == kereses.szerelo)
                 .ToListAsync();
 
             return munkalapok.Select(m => ConvertToMunkalapDto(m)).ToList();

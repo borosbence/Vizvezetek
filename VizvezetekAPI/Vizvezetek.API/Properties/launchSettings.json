@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "VizvezetekAPI": {
+    "Vizvezetek.API": {
       "commandName": "Project",
       "launchUrl": "weatherforecast",
       "environmentVariables": {

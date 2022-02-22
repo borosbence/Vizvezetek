@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VizvezetekAPI
+namespace Vizvezetek.API
 {
     public class Program
     {

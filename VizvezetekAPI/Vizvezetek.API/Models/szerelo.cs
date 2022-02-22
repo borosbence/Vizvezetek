@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace VizvezetekAPI.Models
+namespace Vizvezetek.API.Models
 {
-    public partial class hely
+    public partial class szerelo
     {
-        public hely()
+        public szerelo()
         {
             munkalap = new HashSet<munkalap>();
         }
@@ -20,12 +20,11 @@ namespace VizvezetekAPI.Models
         public int id { get; set; }
         [Required]
         [StringLength(50)]
-        public string telepules { get; set; }
-        [Required]
-        [StringLength(75)]
-        public string utca { get; set; }
+        public string nev { get; set; }
+        [Column(TypeName = "int(4)")]
+        public int kezdes_ev { get; set; }
 
-        [InverseProperty("hely")]
+        [InverseProperty("szerelo")]
         public virtual ICollection<munkalap> munkalap { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace VizvezetekAPI.Models
+namespace Vizvezetek.API.Models
 {
     [Index(nameof(hely_id), Name = "hely_id")]
     [Index(nameof(szerelo_id), Name = "szerelo_id")]

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace VizvezetekAPI.Models
+namespace Vizvezetek.API.Models
 {
     public partial class vizvezetekContext : DbContext
     {
